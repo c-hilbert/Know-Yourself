@@ -1,0 +1,19 @@
+{
+  "name": "mvp",
+  "version": "1.0.0",
+  "description": "conduct experiments with n = 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c-hilbert/mvp.git"
+  },
+  "author": "Carmen Hilbert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/c-hilbert/mvp/issues"
+  },
+  "homepage": "https://github.com/c-hilbert/mvp#readme"
+}
