@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Table from 'react-bootstrap/Table';
+import DataPoint from '../components/DataPoint.jsx';
 
 class LogForm extends React.Component {
   constructor(props) {
     super(props);
     // Set the initial input values
     this.state = {
+      experiment: props.experiment,
       currentStep: 1, // Default is Step 1
       cause: '',
       effect: '',
@@ -110,9 +113,10 @@ class LogForm extends React.Component {
           <Step3
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
+            logs={this.props.experiment.data}
             // password={this.state.password}
           />
-          {this.previousButton()}
+          {/* {this.previousButton()} */}
           {/* {this.nextButton()} */}
 
         </form>
@@ -163,61 +167,28 @@ const Step3 = (props) => {
 
   return (
     <React.Fragment>
-      <div>We also need you to pick the scale witih which you would like to rate your
-        <span className="blue">Stomach pain</span>
-      </div>
-      <p>
-        <div>Describe your
-          <span className="blue">Stomach pain</span>
-          <span> at its:</span>
-        </div>
-      </p>
-      <div className="form-group">
-        <input
-          className="form-control"
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Most optimal"
-          value={props.password}
-          onChange={props.handleChange}
-        />
-        <input
-          className="form-control"
-          id="password"
-          name="password"
-          type="password"
-          value={props.password}
-          onChange={props.handleChange}
-        />
-        <input
-          className="form-control"
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Neutral"
-          value={props.password}
-          onChange={props.handleChange}
-        />
-        <input
-          className="form-control"
-          id="password"
-          name="password"
-          type="password"
-          value={props.password}
-          onChange={props.handleChange}
-        />
-        <input
-          className="form-control"
-          id="password"
-          name="password"
-          type="password"
-          placeholder="Least optimal"
-          value={props.password}
-          onChange={props.handleChange}
-        />
-      </div>
-      <button className="btn btn-success btn-block">Save design</button>
+      <div>Your data so far:</div>
+      <Table striped bordered hover size="sm">
+        <thead>
+
+          <tr>
+            <th>Date</th>
+            <th>Condition</th>
+            <th></th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {props.logs.map((log) => (
+            <DataPoint
+              date={log.date}
+              condition={log.condition}
+              metCondition={log.metCondition}
+              rating={log.rating}
+            />))}
+        </tbody></Table>
+
     </React.Fragment>
   );
 };

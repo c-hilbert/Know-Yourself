@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import LogForm from "../components/LogForm.jsx";
 
 
-const LogBehavior = () => {
+const LogBehavior = (props) => {
   const [show, setShow] = React.useState(false);
 
   const handleClose = () => setShow(false);
@@ -25,7 +25,7 @@ const LogBehavior = () => {
         <Modal.Header closeButton>
         </Modal.Header>
         <Modal.Body>
-          <LogForm/>
+          <LogForm experiment={props.experiment}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

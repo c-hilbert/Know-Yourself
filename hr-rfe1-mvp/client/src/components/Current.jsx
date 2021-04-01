@@ -6,11 +6,14 @@ import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import LogBehavior from '../components/LogBehavior.jsx';
+import data from '../../src/dummy_data.js';
 
 class Current extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentExperiments: data.currentExperiments
+    };
   }
 
   render() {
@@ -30,7 +33,7 @@ class Current extends React.Component {
                 </Card.Header>
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
-                    <LogBehavior/>
+                    <LogBehavior experiment={this.state.currentExperiments[0]}/>
                     {/* <Button variant="info">LOG BEHAVIOR</Button>
                     <Button variant="info">LOG EFFECT</Button>
                     <Button variant="info">VIEW RESULTS</Button> */}
