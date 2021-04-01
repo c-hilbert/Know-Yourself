@@ -5,6 +5,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
+import LogBehavior from '../components/LogBehavior.jsx';
 
 class Current extends React.Component {
   constructor(props) {
@@ -29,9 +30,10 @@ class Current extends React.Component {
                 </Card.Header>
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
-                    <Button variant="info">LOG BEHAVIOR</Button>
+                    <LogBehavior/>
+                    {/* <Button variant="info">LOG BEHAVIOR</Button>
                     <Button variant="info">LOG EFFECT</Button>
-                    <Button variant="info">VIEW RESULTS</Button>
+                    <Button variant="info">VIEW RESULTS</Button> */}
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>

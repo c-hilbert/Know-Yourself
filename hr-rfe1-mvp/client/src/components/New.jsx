@@ -41,7 +41,7 @@ class New extends React.Component {
                 <Card.Text>
                 Determine if there is a causal relationship between two variables by randomly assigning one of two conditions from day to day
                 </Card.Text>
-                {/* <DesignExperiment/> */}
+                <DesignExperiment/>
               </Card.Body>
             </Card>
           </div>

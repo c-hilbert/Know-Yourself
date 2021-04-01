@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Dropdown from 'react-bootstrap/Dropdown';
 
-class DesignForm extends React.Component {
+class LogForm extends React.Component {
   constructor(props) {
     super(props);
     // Set the initial input values
@@ -69,24 +71,24 @@ class DesignForm extends React.Component {
     return null;
   }
 
-  nextButton() {
-    let currentStep = this.state.currentStep;
-    if (currentStep < 3) {
-      return (
-        <button
-          className="btn btn-primary float-right"
-          type="button" onClick={this.next.bind(this)}>
-        Next
-        </button>
-      );
-    }
-    return null;
-  }
+  // nextButton() {
+  //   let currentStep = this.state.currentStep;
+  //   if (currentStep < 3) {
+  //     return (
+  //       <button
+  //         className="btn btn-primary float-right"
+  //         type="button" onClick={this.next.bind(this)}>
+  //       Next
+  //       </button>
+  //     );
+  //   }
+  //   return null;
+  // }
 
   render() {
     return (
       <React.Fragment>
-        <h1>Set up a new experiment!🧙‍♂️</h1>
+        <h1>Log Today's Result</h1>
         <p>Step {this.state.currentStep} </p>
 
         <form onSubmit={this.handleSubmit}>
@@ -96,11 +98,13 @@ class DesignForm extends React.Component {
           <Step1
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
+            next={this.next.bind(this)}
             // email={this.state.email}
           />
           <Step2
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
+            next={this.next.bind(this)}
             // username={this.state.username}
           />
           <Step3
@@ -109,7 +113,7 @@ class DesignForm extends React.Component {
             // password={this.state.password}
           />
           {this.previousButton()}
-          {this.nextButton()}
+          {/* {this.nextButton()} */}
 
         </form>
       </React.Fragment>
@@ -125,41 +129,9 @@ const Step1 = (props) => {
 
   return (
     <div>
-      <div>Let's set up a new experiment!</div>
-      <p></p>
-      <div>First, we need to define an experiment goal.</div>
-      <p></p>
-      <div>A proper experiment goal has
-        <span className="orange">cause</span>
-        <span> and an</span>
-        <span className="blue"> effect</span>
-        <span>such as:</span>
-      </div>
-      <div>I want to see how eating spinach affects my running.</div>
-      <p></p>
-      <div> What is your experiment goal?</div>
-      <div className="form-group">
-        <label htmlFor="email">I want to see how</label>
-        <input
-          className="form-control"
-          id="cause"
-          name="cause"
-          type="text"
-          placeholder="eating dairy"
-          value={props.cause}
-          onChange={props.handleChange}
-        />
-        <label htmlFor="email">affects my</label>
-        <input
-          className="form-control"
-          id="effect"
-          name="effect"
-          type="text"
-          placeholder="stomach pain"
-          value={props.effect}
-          onChange={props.handleChange}
-        />
-      </div>
+      <div> Which condition did you actually do today?</div>
+      <Button variant="info" onClick={props.next}>Meditated</Button>
+      <Button variant="info" onClick={props.next}>Didn't meditate</Button>
     </div>
   );
 };
@@ -169,42 +141,17 @@ const Step2 = (props) => {
     return (<div></div>);
   }
 
-  return(
+  return (
     <div>
-      <div>In order to see how
-        <span className="orange">eating dairy</span>
-        <span>affects your</span>
-        <span clssName="blue">stomach pain,</span>
-        <span>we need to have two conditions that we can compare.</span>
+      <div> Estimate your ability to focus today:
       </div>
-      <p></p>
-      <div>What are two conditions of
-        <span className="orange">eating dairy</span>
-        <span>that you want to try?</span>
-      </div>
-      <div className="form-group">
-        <label htmlFor="username">On some days I will</label>
-        <input
-          className="form-control"
-          id="condition1"
-          name="condition1"
-          type="text"
-          placeholder="Eat 2oz of cheese"
-          value={props.condition1}
-          onChange={props.handleChange}
-        />
-        <label htmlFor="username">And on other days I will</label>
-        <input
-          className="form-control"
-          id="condition2"
-          name="condition2"
-          type="text"
-          placeholder="Not eat any dairy"
-          value={props.condition2}
-          onChange={props.handleChange}
-        />
-      </div>
-
+      <ButtonGroup vertical>
+        <Button onClick={props.next}>High</Button>
+        <Button onClick={props.next}>Pretty Good</Button>
+        <Button onClick={props.next}>OK</Button>
+        <Button onClick={props.next}>Poor</Button>
+        <Button onClick={props.next}>Terrible</Button>
+      </ButtonGroup>
     </div>
   );
 };
@@ -278,4 +225,4 @@ const Step3 = (props) => {
 
 
 
-export default DesignForm;
+export default LogForm;

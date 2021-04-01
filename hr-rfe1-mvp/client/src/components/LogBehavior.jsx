@@ -6,10 +6,10 @@ import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalTitle from "react-bootstrap/ModalTitle";
 import Button from "react-bootstrap/Button";
-import DesignForm from "../components/DesignForm.jsx";
+import LogForm from "../components/LogForm.jsx";
 
 
-const DesignExperiment = () => {
+const LogBehavior = () => {
   const [show, setShow] = React.useState(false);
 
   const handleClose = () => setShow(false);
@@ -18,26 +18,26 @@ const DesignExperiment = () => {
   return (
     <div>
       <Button variant="primary" onClick={handleShow}>
-      Get started
+      Log Behavior
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
         </Modal.Header>
         <Modal.Body>
-          <DesignForm/>
+          <LogForm/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          {/* <Button variant="primary" onClick={handleClose}>
             Save Changes
-          </Button>
+          </Button> */}
         </Modal.Footer>
       </Modal>
     </div>
   );
 };
 
-export default DesignExperiment;
+export default LogBehavior;
